@@ -31,6 +31,11 @@ public class BookController {
 
     @RequestMapping(value = "search", method = RequestMethod.POST)
     public String searchBook(Model model, @RequestParam("keyword") String keyword){
+        if (keyword.isEmpty()){
+            List<BookDetail> books = new ArrayList<>();
+            model.addAttribute("books",books);
+            return "Search";
+        }
         List<BookDetail> books = bookRepository.searchBookByName(keyword);
         model.addAttribute("books", books);
         return "search";
