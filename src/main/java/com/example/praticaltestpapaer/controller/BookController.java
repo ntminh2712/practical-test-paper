@@ -34,7 +34,7 @@ public class BookController {
         if (keyword.isEmpty()){
             List<BookDetail> books = new ArrayList<>();
             model.addAttribute("books",books);
-            return "Search";
+            return "search";
         }
         List<BookDetail> books = bookRepository.searchBookByName(keyword);
         model.addAttribute("books", books);
